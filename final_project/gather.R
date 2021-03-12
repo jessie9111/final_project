@@ -1,23 +1,6 @@
----
-title: "Final project analysis"
-author: "Mohit Mandal"
-date: "3/10/2021"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
-```
-
-
-```{r download}
 
 gen_pop <- read_csv("raw_data/GEN_POP_2020.CSV")
-
-```
-
-```{r age_analysis}
 
 gen_pop %>%
   select(country, age) %>%
@@ -26,16 +9,9 @@ gen_pop %>%
   group_by(country, age) %>%
   summarize(respondents = n())
 
-```
-
-```{r geography_sum}
-
 geography_sum <- gen_pop %>%
   select(geography) %>%
   mutate(geography = ifelse(gen_pop$geography == "Not Available", NA, gen_pop$geography)) %>%
   drop_na() %>%
   group_by(geography) %>%
   summarize(respondents = n()) 
-
-```
-

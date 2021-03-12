@@ -1,5 +1,6 @@
 library(shiny)
-source("gather.Rmd")
+library(tidyverse)
+source("gather.R")
 
 ui <- navbarPage(
     "Gov 1005 Final Project",
@@ -25,7 +26,7 @@ ui <- navbarPage(
              p(tags$a(href="https://github.com/mohitmandal/finalproject_milestone3", "Link"), "to repo"))))
 
 server <- function(input, output) {
-    output$geography_sum <- renderDataTable(geography_sum)
+    output$geography_sum <- renderTable(geography_sum)
 }
 
 
